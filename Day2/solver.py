@@ -1,19 +1,21 @@
 import os
+from typing import List, Tuple
 import requests
 
 AOC_SESSION = os.environ['AOC_SESSION']
 
-def get_data():
-    data = requests.get(f'https://adventofcode.com/2021/day/2/input',
-        cookies={'session': AOC_SESSION}).content
-    data = data.decode('utf-8').split('\n')
-    data = [item.split(' ') for item in data[:-1]] # ignore the last line for being empty
-    data = [(item[0], int(item[1])) for item in data]
+def get_data() -> List[Tuple[str, int]]:
+    data : List[str] = requests.get(f'https://adventofcode.com/2021/day/2/input',
+        cookies={'session': AOC_SESSION}).content.decode('utf-8').split('\n')
 
-    return data
+    data_list : List[List] = [item.split(' ') for item in data[:-1]] # ignore the last line for being empty
+
+    data_list_of_tuples : List[Tuple[str, int]] = [(item[0], int(item[1])) for item in data_list]
+
+    return data_list_of_tuples
 
 
-def solve_q1(data):
+def solve_q1(data: List[Tuple[str, int]]):
     horiz = 0
     depth = 0
     
@@ -28,7 +30,7 @@ def solve_q1(data):
     print(horiz * depth)
 
 
-def solve_q2(data):
+def solve_q2(data: List[Tuple[str, int]]):
     horiz = 0
     depth = 0
     aim = 0
