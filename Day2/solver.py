@@ -4,7 +4,8 @@ import requests
 AOC_SESSION = os.environ['AOC_SESSION']
 
 def get_data():
-    data = requests.get(f'https://adventofcode.com/2021/day/2/input', cookies={'session': AOC_SESSION}).content
+    data = requests.get(f'https://adventofcode.com/2021/day/2/input',
+        cookies={'session': AOC_SESSION}).content
     data = data.decode('utf-8').split('\n')
     data = [item.split(' ') for item in data[:-1]] # ignore the last line for being empty
     data = [(item[0], int(item[1])) for item in data]
