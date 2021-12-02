@@ -8,7 +8,7 @@ def get_data() -> List[Tuple[str, int]]:
     data : List[str] = requests.get(f'https://adventofcode.com/2021/day/2/input',
         cookies={'session': AOC_SESSION}).content.decode('utf-8').split('\n')
 
-    data_list : List[List] = [item.split(' ') for item in data[:-1]] # ignore the last line for being empty
+    data_list : List[List[str]] = [item.split(' ') for item in data[:-1]] # ignore the last line for being empty
 
     data_list_of_tuples : List[Tuple[str, int]] = [(item[0], int(item[1])) for item in data_list]
 
