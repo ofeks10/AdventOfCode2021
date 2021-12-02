@@ -1,8 +1,14 @@
+import os
+import requests
+
+
+AOC_SESSION = os.environ['AOC_SESSION']
+
 def get_data():
-    with open('input_day1.txt', 'r') as f:
-        data = f.read().split('\n')
-        data = list(map(int, data[:-1])) # Remove the last row which is empty
-        
+    data = requests.get('https://adventofcode.com/2021/day/1/input', cookies={'session': AOC_SESSION}).content
+    data = data.decode('utf-8')
+    data = data.split('\n')
+    data = [int(x) for x in data[:-1]]
     return data
 
 

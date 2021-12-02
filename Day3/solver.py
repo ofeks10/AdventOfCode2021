@@ -4,7 +4,9 @@ import requests
 AOC_SESSION = os.environ['AOC_SESSION']
 
 def get_data():
-    data = requests.get('https://adventofcode/2021/day/3/input', cookies={'session': AOC_SESSION})
+    data = requests.get('https://adventofcode.com/2021/day/3/input', cookies={'session': AOC_SESSION})
+    data = data.decode('utf-8')
+    data = data.split('\n')
     # manipulation
     return data
 
