@@ -1,6 +1,7 @@
+import os
 import requests
 
-AOC_SESSION = ""
+AOC_SESSION = os.environ['AOC_SESSION']
 
 def get_data():
     data = requests.get('https://adventofcode/2021/day/3/input', cookies={'session': AOC_SESSION})
