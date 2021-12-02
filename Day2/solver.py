@@ -48,6 +48,6 @@ def solve_q2(data: List[Tuple[str, int]]):
 
 
 if __name__ == '__main__':
-    data = get_data()
+    data : List[Tuple[str, int]] = get_data()
     solve_q1(data)
     solve_q2(data)
