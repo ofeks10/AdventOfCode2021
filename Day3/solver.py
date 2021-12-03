@@ -21,7 +21,10 @@ def solve_q1(data: List[str]):
         gamma_rate += '1' if ones > zeros else '0'
         epsilon_rate += '1' if ones < zeros else '0'
 
-    print(int(gamma_rate, 2) * int(epsilon_rate, 2))
+    epsilon_rate = int(gamma_rate, 2) ^ int(('1' * len(gamma_rate)), 2)
+    gamma_rate = int(gamma_rate, 2)
+
+    print(epsilon_rate * gamma_rate)
     
 
 
