@@ -12,7 +12,7 @@ SPACE_LINES_BETWEEN_ROWS = 1
 
 class BingoBoard:
     def __init__(self, board: List[List[int]]) -> None:
-        self.board_with_marks: List[List[List[int, bool]]] = [[[x, False] for x in item] for item in board]
+        self.board_with_marks: List[List[List[int]]] = [[[x, False] for x in item] for item in board]
         self.won = False
 
     def check_if_row(self):
