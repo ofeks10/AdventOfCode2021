@@ -2,7 +2,7 @@ name: Update AoC Badges
 # See https://github.com/marketplace/actions/aoc-badges
 on:
   schedule: # run workflow based on schedule
-    - cron: "0 * * * *"
+    - cron: "0 */12 * * *"
   push:
     branches:
       - main
