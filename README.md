@@ -5,3 +5,5 @@
 ![](https://img.shields.io/badge/days%20completed-2-red)
 
 These are my solutions for advent of code 2021
+
+<!--- advent_readme_stars table --->
