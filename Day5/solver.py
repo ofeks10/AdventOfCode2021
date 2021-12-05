@@ -1,82 +1,55 @@
+from collections import Counter
 import os
-from typing import List, Tuple
+from typing import List
 import requests
 
 
 AOC_SESSION = os.environ['AOC_SESSION']
 
 
-class Point:
-    def __init__(self, from_point: str, to_point: str) -> None:
-        self.from_x, self.from_y = map(int, from_point.split(','))
-        self.to_x, self.to_y = map(int, to_point.split(','))
-
-    def is_vertical(self):
-        return int(self.from_x) == int(self.to_x)
-
-    def is_horizontal(self):
-        return int(self.from_y) == int(self.to_y)
-
-    def is_diagonal(self):
-        return not self.is_horizontal() and not self.is_vertical()
-
-
-def get_data() -> List[Point]:
+def get_data() -> List[List[int]]:
     data : List[str] = requests.get('https://adventofcode.com/2021/day/5/input',
         cookies={'session': AOC_SESSION}).content.decode('utf-8').split('\n')[:-1]
-    # data = open('./Day5/test.in').readlines()
-    # data = open('/home/ofeks10/Downloads/input.txt').readlines()
-    points: List[Point] = []
-    for line in data:
-        from_point, to_point = line.split(' -> ')
-        points.append(Point(from_point, to_point))
+    
+    points = [[int(i) for i in x.replace(' -> ', ',').split(',')] for x in data]
     
     return points
 
 
-def solve_q1(points: List[Point]):
-    max_x = max(int(point.to_x) for point in points)
-    max_y = max(int(point.to_y) for point in points)
-
-    board = [[0 for i in range(max_x + 5)] for j in range(max_y + 5)]
-
-    for point in points:
-        if point.is_horizontal():
-            for i in range(min(int(point.from_x), int(point.to_x)), max(int(point.from_x), int(point.to_x)) + 1):
-                board[int(point.from_y)][i] += 1
-        elif point.is_vertical():
-            for i in range(min(int(point.from_y), int(point.to_y)), max(int(point.from_y), int(point.to_y)) + 1):
-                board[i][int(point.from_x)] += 1
-   
-    print(sum(sum(1 for i in row if i >= 2) for row in board))
-    return board
-        
-
-def my_range(start, end):
-    if start > end:
-        return range(start, end -1, -1)
-    else:
+def my_range(start: int, end: int):
+    if start < end:
         return range(start, end + 1)
+    else:
+        return range(start, end - 1, -1)
 
-def solve_q2(points: List[Point], board: List[List[int]]):
-    new_board = board.copy()
 
-    for point in filter(lambda x: x.is_diagonal(), points):
-        start_x = point.from_x
-        end_x = point.to_x
-        start_y = point.from_y
-        end_y = point.to_y
+def solve_q1(data: List[List[int]]) -> Counter[int]:
+    c: Counter[int] = Counter()
 
-        # print(point.from_x, point.from_y, point.to_x, point.to_y)
-        # print(start_x, start_y, end_x, end_y)
+    for point in data:
+        start_x = min(point[0], point[2])
+        end_x = max(point[0], point[2])
+        start_y = min(point[1], point[3])
+        end_y = max(point[1], point[3])
+ 
+        if start_x == end_x:
+            c.update(map(lambda y: (start_x, y), my_range(start_y, end_y)))
+        elif start_y == end_y:
+            c.update(map(lambda x: (x, start_y), my_range(start_x, end_x)))
 
-        for x, y in zip(my_range(start_x, end_x), my_range(start_y, end_y)):
-            new_board[y][x] += 1
+    print(sum([1 for item in c.values() if item >= 2]))
+    return c
 
-    print(sum(sum(1 for i in row if i >= 2) for row in new_board))
+
+def solve_q2(data: List[List[int]], q1_counter: Counter[int]):
+    for point in filter(lambda x: x[0] != x[2] and x[1] != x[3], data):
+        q1_counter.update(zip(my_range(point[0], point[2]), my_range(point[1], point[3])))
+    
+    print(sum([1 for item in q1_counter.values() if item >= 2]))
+
 
 if __name__ == '__main__':
     data = get_data()
     
-    board = solve_q1(data)
-    solve_q2(data, board)
+    q1_counter = solve_q1(data)
+    solve_q2(data, q1_counter)
