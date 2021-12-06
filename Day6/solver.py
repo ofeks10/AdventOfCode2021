@@ -15,6 +15,7 @@ def get_data() -> List[int]:
     
     return fish
 
+
 def counter(days: int, data: Dict[int, int]):
     for _ in range(days):
         new_fishes = data[0]
