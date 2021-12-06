@@ -15,34 +15,29 @@ def get_data() -> List[int]:
     
     return fish
 
-def recurse_counter(days: int, data: Dict[int, int]):
-    if days == 0:
-        print(sum(data.values()))
-        return
+def counter(days: int, data: Dict[int, int]):
+    for _ in range(days):
+        new_fishes = data[0]
+        for i in range(9):
+            data[i] = data[(i+1)] if i != 8 else new_fishes
+            if i == 6:
+                data[i] += new_fishes
 
-    new_fishes = data[0]
-    for i in range(9):
-        data[i] = data[(i+1)] if i != 8 else new_fishes
-        if i == 6:
-            data[i] += new_fishes
-
-    recurse_counter(days - 1, data)
-    
+    print(sum(data.values()))
 
 
 def solve_q1(data: List[int]) -> None:
     c = Counter(data)
     fishes_count = {i: c[i] for i in range(9)}
 
-    recurse_counter(80, fishes_count)
+    counter(80, fishes_count)
     
-
 
 def solve_q2(data: List[int]):
     c = Counter(data)
     fishes_count = {i: c[i] for i in range(9)}
     
-    recurse_counter(256, fishes_count)
+    counter(256, fishes_count)
 
 
 if __name__ == '__main__':
