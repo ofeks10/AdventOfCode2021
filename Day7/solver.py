@@ -16,37 +16,14 @@ def get_data() -> List[int]:
 
 
 def solve_q1(data: List[int]):
-    min_crab = min(data)
-    max_crab = max(data)
-    min_fuel = 1000000000
-    print(min_crab, max_crab)
-
-    for i in range(min_crab, max_crab + 1):
-        current_fuel = 0
-        for crab in data:
-            current_fuel += (abs(crab - i))
-
-        if current_fuel < min_fuel:
-            min_fuel = current_fuel
-    
-    print(min_fuel)
+    data.sort()
+    med = data[len(data) // 2]
+    print(sum(abs(med - crab) for crab in data))
 
 def solve_q2(data: List[int]):
-    min_crab = min(data)
-    max_crab = max(data)
-    min_fuel = 1000000000
-    print(min_crab, max_crab)
-
-    for i in range(min_crab, max_crab + 1):
-        # print(i)
-        current_fuel = 0
-        for crab in data:
-            current_fuel += (sum(range(1, abs(crab - i) + 1)))
-
-        if current_fuel < min_fuel:
-            min_fuel = current_fuel
-    
-    print(min_fuel)
+    data.sort()
+    s = lambda x: x * (x + 1) // 2
+    print(min((sum(s(abs(crab - i)) for crab in data) for i in range(max(data)))))
 
 
 if __name__ == '__main__':
