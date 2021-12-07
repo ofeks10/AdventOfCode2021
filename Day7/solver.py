@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import Callable, List
 import requests
 
 
@@ -22,7 +22,7 @@ def solve_q1(data: List[int]):
 
 def solve_q2(data: List[int]):
     data.sort()
-    s = lambda x: x * (x + 1) // 2
+    s: Callable[[int], int] = lambda x: x * (x + 1) // 2
     print(min((sum(s(abs(crab - i)) for crab in data) for i in range(max(data)))))
 
 
