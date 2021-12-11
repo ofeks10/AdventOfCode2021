@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: jakejarvis/wait-action@master
-          with:
+        with:
           time: '120s'
       - uses: actions/checkout@v2
       - uses: k2bd/advent-readme-stars@v1
