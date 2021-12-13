@@ -1,5 +1,5 @@
 import os
-from typing import Dict, List, Set
+from typing import DefaultDict, Dict, List, Set
 from collections import defaultdict
 import requests
 
@@ -7,13 +7,13 @@ import requests
 AOC_SESSION = os.environ['AOC_SESSION']
 
 
-def get_data() -> Dict[str, List[str]]:
+def get_data() -> DefaultDict[str, List[str]]:
     data : List[str] = requests.get('https://adventofcode.com/2021/day/12/input',
         cookies={'session': AOC_SESSION}).content.decode('utf-8').split('\n')[:-1]
     
     # data = open('./Day12/example.in', 'r').read().split('\n')[:-1]
 
-    graph = defaultdict(list)
+    graph: DefaultDict[str, List[str]] = defaultdict(list)
     for line in data:
         a, b = line.split('-')
         graph[a].append(b)
@@ -64,7 +64,7 @@ def count_graph_q2(graph: Dict[str, List[str]], current: str, end: str, visited:
     return total
 
 
-def solve_q2(data: List[int]):
+def solve_q2(data: List[]):
     print(count_graph_q2(data, 'start', 'end', set(['start']), '', ['start'], set()))
 
 
