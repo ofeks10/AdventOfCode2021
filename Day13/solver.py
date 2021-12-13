@@ -48,11 +48,12 @@ def solve_q2(points: Set[Tuple[int, int]], folds: List[Tuple[str, int]]):
         new_points = perform_fold(new_points, fold)
     
     # Print the board
+    print()
     max_y, max_x = (max(new_points, key=lambda x: x[1])[1], max(new_points, key=lambda x: x[0])[0])
-    for i in range(max_y + 3):
-        for j in range(max_x + 4):
+    for i in range(max_y + 1):
+        for j in range(max_x + 1):
             if (j, i) in new_points:
-                print('#', end=' ')
+                print('█', end=' ')
             else:
                 print(' ', end=' ')
         print()
