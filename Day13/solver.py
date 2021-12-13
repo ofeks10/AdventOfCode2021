@@ -37,7 +37,6 @@ def perform_fold(points: Set[Tuple[int, int]], fold: Tuple[str, int]):
 
 
 def solve_q1(points: Set[Tuple[int, int]], folds: List[Tuple[str, int]]):
-    print('starting')
     new_points = deepcopy(points)
     print(len(perform_fold(new_points, folds[0])))
 
