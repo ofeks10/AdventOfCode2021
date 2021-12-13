@@ -54,7 +54,7 @@ def solve_q2(points: Set[Tuple[int, int]], folds: List[Tuple[str, int]]):
             if (j, i) in new_points:
                 print('#', end=' ')
             else:
-                print('.', end=' ')
+                print(' ', end=' ')
         print()
 
 
