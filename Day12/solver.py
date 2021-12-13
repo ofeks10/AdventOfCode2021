@@ -11,8 +11,6 @@ def get_data() -> DefaultDict[str, List[str]]:
     data : List[str] = requests.get('https://adventofcode.com/2021/day/12/input',
         cookies={'session': AOC_SESSION}).content.decode('utf-8').split('\n')[:-1]
     
-    # data = open('./Day12/example.in', 'r').read().split('\n')[:-1]
-
     graph: DefaultDict[str, List[str]] = defaultdict(list)
     for line in data:
         a, b = line.split('-')
@@ -35,11 +33,11 @@ def count_graph_q1(graph: Dict[str, List[str]], current: str, end: str, visited:
 
     return total
 
-def solve_q1(data: Dict[str, List[str]]):
+def solve_q1(data: DefaultDict[str, List[str]]):
     print(count_graph_q1(data, 'start', 'end', set()))
 
 
-def count_graph_q2(graph: Dict[str, List[str]], current: str, end: str, visited: Set[str], twice: str, path: List[str], paths: Set[str]) -> int:
+def count_graph_q2(graph: DefaultDict[str, List[str]], current: str, end: str, visited: Set[str], twice: str, path: List[str], paths: Set[str]) -> int:
     total = 0
     for node in graph[current]:
         if node in visited:
@@ -64,7 +62,7 @@ def count_graph_q2(graph: Dict[str, List[str]], current: str, end: str, visited:
     return total
 
 
-def solve_q2(data: List[]):
+def solve_q2(data: DefaultDict[str, List[str]]):
     print(count_graph_q2(data, 'start', 'end', set(['start']), '', ['start'], set()))
 
 
