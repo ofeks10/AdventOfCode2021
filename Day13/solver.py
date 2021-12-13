@@ -40,6 +40,7 @@ def solve_q1(points: Set[Tuple[int, int]], folds: List[Tuple[str, int]]):
     new_points = deepcopy(points)
     print(len(perform_fold(new_points, folds[0])))
 
+
 def solve_q2(points: Set[Tuple[int, int]], folds: List[Tuple[str, int]]):
     new_points = deepcopy(points)
 
@@ -57,8 +58,6 @@ def solve_q2(points: Set[Tuple[int, int]], folds: List[Tuple[str, int]]):
             else:
                 print(' ', end=' ')
         print()
-
-
 
 
 if __name__ == '__main__':
