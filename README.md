@@ -1,8 +1,8 @@
 # Advent Of Code 2021
 
-![](https://img.shields.io/badge/day%20📅-12-blue)
-![](https://img.shields.io/badge/stars%20⭐-22-yellow)
-![](https://img.shields.io/badge/days%20completed-11-red)
+![](https://img.shields.io/badge/day%20📅-13-blue)
+![](https://img.shields.io/badge/stars%20⭐-24-yellow)
+![](https://img.shields.io/badge/days%20completed-12-red)
 
 These are my solutions for advent of code 2021
 
@@ -22,4 +22,5 @@ These are my solutions for advent of code 2021
 | [Day 9](https://adventofcode.com/2021/day/9) | ⭐ | ⭐ |
 | [Day 10](https://adventofcode.com/2021/day/10) | ⭐ | ⭐ |
 | [Day 11](https://adventofcode.com/2021/day/11) | ⭐ | ⭐ |
+| [Day 12](https://adventofcode.com/2021/day/12) | ⭐ | ⭐ |
 <!--- advent_readme_stars table --->
