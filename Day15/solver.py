@@ -16,6 +16,7 @@ def get_data() -> List[str]:
 def solve_q1(data: List[str]):
     pass
 
+
 def solve_q2(data: List[str]):
     pass
 
