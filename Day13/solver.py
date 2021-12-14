@@ -54,9 +54,9 @@ def solve_q2(points: Set[Tuple[int, int]], folds: List[Tuple[str, int]]):
     for i in range(max_y + 1):
         for j in range(max_x + 1):
             if (j, i) in new_points:
-                print('█', end=' ')
+                print('█', end='')
             else:
-                print(' ', end=' ')
+                print(' ', end='')
         print()
 
 
