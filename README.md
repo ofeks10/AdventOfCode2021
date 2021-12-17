@@ -1,8 +1,8 @@
 # Advent Of Code 2021
 
 ![](https://img.shields.io/badge/day%20📅-17-blue)
-![](https://img.shields.io/badge/stars%20⭐-32-yellow)
-![](https://img.shields.io/badge/days%20completed-16-red)
+![](https://img.shields.io/badge/stars%20⭐-34-yellow)
+![](https://img.shields.io/badge/days%20completed-17-red)
 
 These are my solutions for advent of code 2021
 
