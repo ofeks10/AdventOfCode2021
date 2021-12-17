@@ -1,5 +1,5 @@
 import os
-from typing import Callable, List, Set, Tuple
+from typing import List, Set, Tuple
 import requests
 
 
